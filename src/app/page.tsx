@@ -1,10 +1,11 @@
 "use client";
 import WorkoutDetails from "@/components/WorkoutDetails";
 import WorkoutForm from "@/components/WorkoutForm";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import useWorkoutsContext from "@/hooks/useWorkoutsContext";
 
 export default function Home() {
-  const [workouts, setWorkouts] = useState<Workout[] | null>(null);
+  const { state, dispatch } = useWorkoutsContext();
 
   useEffect(() => {
     const fetchWorkouts = async () => {
@@ -14,7 +15,7 @@ export default function Home() {
       const json = await response.json();
 
       if (response.ok) {
-        setWorkouts(json);
+        dispatch({ type: "SET_WORKOUTS", payload: json });
       }
       console.log(json);
     };
@@ -26,8 +27,8 @@ export default function Home() {
     <>
       <WorkoutForm />
       <div>
-        {workouts &&
-          workouts.map((w) => (
+        {state.workouts &&
+          state.workouts.map((w) => (
             <WorkoutDetails key={w.id} workout={w}></WorkoutDetails>
           ))}
       </div>

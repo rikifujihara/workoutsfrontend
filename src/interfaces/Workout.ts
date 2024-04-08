@@ -1,6 +1,6 @@
 interface Workout {
-    id: string;
+    id: string|"";
     title: string;
-    reps: number;
-    load: number;
+    reps: number|"";
+    load: number|"";
 }

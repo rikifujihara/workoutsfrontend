@@ -1,17 +1,18 @@
 import { FormEvent, useState } from "react";
+import useWorkoutsContext from "@/hooks/useWorkoutsContext";
 
 export default function WorkoutForm() {
+  const { dispatch } = useWorkoutsContext();
   const [error, setError] = useState<string>("");
   const [title, setTitle] = useState<string>("");
-  const [load, setLoad] = useState<number | string>("");
-  const [reps, setReps] = useState<number | string>("");
+  const [load, setLoad] = useState<number | "">("");
+  const [reps, setReps] = useState<number | "">("");
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
 
-    const workout = { title, load, reps };
+    const workout: Workout = { id: "", title, reps, load };
 
-    console.log(JSON.stringify(workout));
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_BACKEND}/api/workout`,
       {
@@ -29,6 +30,8 @@ export default function WorkoutForm() {
       setError(json.error);
     }
     if (response.ok) {
+      dispatch({ type: "ADD_WORKOUT", payload: workout });
+
       setTitle("");
       setLoad("");
       setReps("");
