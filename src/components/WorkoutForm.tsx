@@ -39,7 +39,10 @@ export default function WorkoutForm() {
   return (
     <>
       <h2 className="text-xl font-bold mb-4">Workout Form</h2>
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <form
+        onSubmit={handleSubmit}
+        className="space-y-4 border border-gray-200 rounded-lg p-4 shadow-md mb-4"
+      >
         <div className="flex flex-col">
           <label htmlFor="title" className="font-bold">
             Title:
