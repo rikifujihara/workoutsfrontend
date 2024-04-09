@@ -1,3 +1,5 @@
+import { prettyDate } from "@/util/prettyDate";
+
 interface WorkoutProps {
   workout: Workout;
 }
@@ -14,6 +16,7 @@ export default function WorkoutDetails({ workout }: WorkoutProps) {
           <strong>Reps: </strong> {workout.reps}
         </p>
       </div>
+      <h5>{prettyDate(workout.timestamp)}</h5>
     </div>
   );
 }

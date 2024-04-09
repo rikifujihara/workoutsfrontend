@@ -21,7 +21,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <WorkoutsContextProvider>
           <Navbar />
-          <main className="flex min-h-screen flex-col items-center justify-center">
+          <main className="flex min-h-screen flex-col items-center justify-center mt-10">
             {children}
           </main>
         </WorkoutsContextProvider>

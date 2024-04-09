@@ -11,13 +11,19 @@ export default function WorkoutForm() {
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
 
-    const workout: Workout = { id: "", title, reps, load };
+    const workout: Workout = {
+      id: "",
+      title,
+      reps,
+      load,
+      timestamp: "",
+    };
 
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_BACKEND}/api/workout`,
       {
         method: "POST",
-        body: JSON.stringify(workout),
+        body: JSON.stringify({ title, reps, load }),
         headers: {
           "Content-Type": "application/json",
         },
@@ -30,7 +36,7 @@ export default function WorkoutForm() {
       setError(json.error);
     }
     if (response.ok) {
-      dispatch({ type: "ADD_WORKOUT", payload: workout });
+      dispatch({ type: "ADD_WORKOUT", payload: json });
 
       setTitle("");
       setLoad("");
