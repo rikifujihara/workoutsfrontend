@@ -50,7 +50,7 @@ export default function WorkoutForm() {
       <h2 className="text-xl font-bold mb-4">Workout Form</h2>
       <form
         onSubmit={handleSubmit}
-        className="space-y-4 border border-gray-200 rounded-lg p-4 shadow-md mb-4"
+        className="space-y-4 border border-gray-200 rounded-lg p-4 shadow-md mb-4 w-4/5 sm:w-4/5 lg:w-1/2"
       >
         <div className="flex flex-col">
           <label htmlFor="title" className="font-bold">

@@ -26,7 +26,7 @@ export default function Home() {
   return (
     <>
       <WorkoutForm />
-      <div>
+      <div className="w-4/5 sm:w-4/5 lg:w-1/2">
         {state.workouts &&
           state.workouts.map((w) => (
             <WorkoutDetails key={w.id} workout={w}></WorkoutDetails>
